@@ -16,7 +16,7 @@ import {StackType} from '../utils/enums';
 const loading = false;
 
 export const Router = () => {
-  const stack = useSelector(state => state.stack);
+  const stack = useSelector(state => state.onBoarding.stack);
   const scheme = useColorScheme();
   useEffect(() => {
     // SplashScreen.hide();
@@ -25,6 +25,8 @@ export const Router = () => {
   if (loading) {
     return <Loading />;
   }
+
+  console.log('stack', stack);
 
   return (
     <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
