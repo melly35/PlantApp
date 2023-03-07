@@ -25,9 +25,6 @@ export const OnboardingSlideScreen = ({navigation}) => {
     const xPos = event.nativeEvent.contentOffset.x;
     const current = Math.round(xPos / totalWidth);
     setCurrentIndex(current);
-    // let yOffset = event.nativeEvent.contentOffset.y;
-    // let contentHeight = event.nativeEvent.contentSize.height;
-    // let value = yOffset / contentHeight;
   };
 
   const goNextSlide = () => {
