@@ -1,13 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, ActivityIndicator, FlatList, StyleSheet} from 'react-native';
-import paywallData from '../../utils/paywallData';
+import {FlatList, StyleProp} from 'react-native';
+import paywallData from '../../../utils/paywallAttributesData';
 import {PaywallItem} from './paywall.item';
 
-export const PaywallHorizantalSlider = () => {
+type Props = {
+  style?: StyleProp<any>;
+};
+
+export const PaywallHorizantalSlider = ({style}: Props) => {
   return (
     <FlatList
-      style={[]}
+      style={[{flex: 1}, style]}
       horizontal
       showsHorizontalScrollIndicator={false}
       data={paywallData}
@@ -15,8 +19,3 @@ export const PaywallHorizantalSlider = () => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-  itemContainer: {},
-});

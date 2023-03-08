@@ -1,13 +1,12 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {OnboardingScreen} from '../screens/Onboarding';
-import {OnboardingSlideScreen} from '../screens/Onboarding/OnboardingSlide';
-import OnboardingPaywallScreen from '../screens/Onboarding/OnboardingPaywallScreen';
+import PaywallScreen from '../screens/Paywall';
 
 export type OnboardingStackParamList = {
   Onboarding: undefined; // undefined means routes doesn't have params
   OnboardingSlide: undefined;
-  OnboardingPaywallScreen: undefined;
+  PaywallScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<OnboardingStackParamList>();
@@ -21,13 +20,8 @@ export const OnboardingStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="OnboardingSlide"
-        component={OnboardingSlideScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="OnboardingPaywallScreen"
-        component={OnboardingPaywallScreen}
+        name="PaywallScreen"
+        component={PaywallScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

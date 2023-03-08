@@ -2,19 +2,17 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Text,
   FlatList,
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native';
-import AppIntroSlider from 'react-native-app-intro-slider';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {Button} from '../../components/Button';
-import {PaginationDot} from '../../components/PaginationDot';
-import {verticalScale} from '../../utils/metrics';
+import {Button} from '../Button';
+import {PaginationDot} from '../PaginationDot';
 import slides from '../../utils/slides';
 import useRefState from '../../utils/use-ref-state';
-import {OnboardingItem} from './OnboardingItem';
+import {OnboardingItem} from './onboarding.item';
+import {SlidePrivacyFooter} from './onboarding.footer';
+import {horizontalScale, verticalScale} from '../../utils/metrics';
 
 export const OnboardingSlideScreen = ({navigation}) => {
   const flatListRef = React.useRef<FlatList>();
@@ -28,9 +26,8 @@ export const OnboardingSlideScreen = ({navigation}) => {
   };
 
   const goNextSlide = () => {
-    console.log('goNextSlide', slides.length, currentIndexRef.current);
     if (slides.length - 1 === currentIndexRef.current) {
-      navigation.navigate('OnboardingPaywallScreen');
+      navigation.navigate('PaywallScreen');
     }
 
     const nextIndex =
@@ -63,8 +60,20 @@ export const OnboardingSlideScreen = ({navigation}) => {
         snapToAlignment="center"
       />
       <View style={[styles.actionContainer]}>
-        <Button label="Continue" textBold onPress={() => goNextSlide()} />
-        <PaginationDot activeIndex={currentIndex} items={slides} />
+        <Button
+          label={currentIndex === 0 ? 'Get Started' : 'Continue'}
+          textBold
+          onPress={() => goNextSlide()}
+          style={{
+            width: horizontalScale(327),
+            height: verticalScale(56),
+          }}
+        />
+        {currentIndex === 0 ? (
+          <SlidePrivacyFooter />
+        ) : (
+          <PaginationDot activeIndex={currentIndex} items={slides} />
+        )}
       </View>
     </View>
   );
@@ -72,10 +81,10 @@ export const OnboardingSlideScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   imageContainer: {
-    flex: 0.82,
+    flex: 0.8,
   },
   actionContainer: {
-    flex: 0.18,
+    flex: 0.2,
     justifyContent: 'flex-start',
     alignItems: 'center',
   },

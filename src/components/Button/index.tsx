@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {horizontalScale, verticalScale} from '../../utils/metrics';
 
-export type Props = {
+type Props = {
   label: string;
   style?: StyleProp<any>;
   textBold?: boolean;
@@ -28,8 +28,6 @@ export const Button = ({label, style, textBold, onPress}: Props) => {
 
 const styles = StyleSheet.create({
   button: {
-    width: horizontalScale(327),
-    height: verticalScale(56),
     backgroundColor: '#28AF6E',
     textAlign: 'center',
     justifyContent: 'center',

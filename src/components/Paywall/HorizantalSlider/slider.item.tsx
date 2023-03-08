@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Text, Image} from 'react-native';
-import {horizontalScale, verticalScale} from '../../utils/metrics';
+import {horizontalScale, verticalScale} from '../../../utils/metrics';
 
 export const PaywallItem = ({item}) => {
   return (
@@ -18,12 +18,12 @@ export const PaywallItem = ({item}) => {
 
 const styles = StyleSheet.create({
   itemContainer: {
-    width: verticalScale(160),
+    width: horizontalScale(150),
     height: verticalScale(130),
     marginRight: 12,
     borderRadius: 14,
     backgroundColor: 'rgba(35,48,41, 0.95)',
-    padding: verticalScale(16),
+    padding: horizontalScale(14),
     justifyContent: 'space-between',
   },
   itemTitle: {
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     fontSize: verticalScale(20),
   },
   itemSubTitle: {
-    marginTop: 6,
+    marginTop: verticalScale(6),
     color: 'rgba(255,255,255, 0.7)',
   },
   iconContainer: {
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   icon: {
-    width: verticalScale(17),
-    height: verticalScale(17),
+    width: horizontalScale(17),
+    height: horizontalScale(17),
     alignSelf: 'center',
   },
 });

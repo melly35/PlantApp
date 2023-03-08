@@ -1,17 +1,8 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {
-  StyleProp,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  Dimensions,
-  View,
-  ViewStyle,
-} from 'react-native';
-import {horizontalScale, verticalScale} from '../../utils/metrics';
+import {StyleSheet, View, ViewStyle} from 'react-native';
+import {verticalScale} from '../../utils/metrics';
 
-export type Props = {
+type Props = {
   activeIndex: number;
   items: Array<any>;
 };
@@ -36,13 +27,15 @@ export const PaginationDot = ({activeIndex, items}: Props) => {
     <View style={[styles.container]}>
       {items.map((item, index) => {
         return (
-          <View
-            key={index}
-            style={[
-              PAGINATIN_DOT,
-              activeIndex === index && PAGINATIN_DOT_SELECTED,
-            ]}
-          />
+          index != 0 && (
+            <View
+              key={index}
+              style={[
+                PAGINATIN_DOT,
+                activeIndex === index && PAGINATIN_DOT_SELECTED,
+              ]}
+            />
+          )
         );
       })}
     </View>

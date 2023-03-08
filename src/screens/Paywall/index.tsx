@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import {Button} from '../../components/Button';
 import {CustomIcon} from '../../components/CustomIcon';
 import {
   PaywallHorizantalSlide,
   PaywallHorizantalSlider,
-} from '../../components/PaywallHorizantalSlider';
+} from '../../components/Paywall/HorizantalSlider';
+import {PaywallRadioGroup} from '../../components/Paywall/RadioGroup';
 import {horizontalScale, verticalScale} from '../../utils/metrics';
+import paywallPaymentData from '../../utils/paywallPaymentData';
+import {PaywallPaymentItemProps} from '../../utils/props';
 import {ScannerIcon} from '../../utils/svg/general';
 
-const OnboardingPaywallScreen = () => {
+const PaywallScreen = () => {
+  const [selected, setSelected] = useState<PaywallPaymentItemProps>();
+  const onSelected = (item: PaywallPaymentItemProps) => {
+    setSelected(item);
+  };
   return (
     <View style={[styles.container]}>
       <Image
@@ -17,14 +25,29 @@ const OnboardingPaywallScreen = () => {
         resizeMode="cover"
       />
       <View style={[styles.content]}>
-        <Text style={[styles.headTitle]}>
-          <Text style={[styles.textBold]}>PlantApp</Text> Premium
-        </Text>
-        <Text style={[styles.subTitle]}>Access All Features</Text>
+        <View
+          style={{
+            paddingLeft: horizontalScale(20),
+            flex: 1,
+          }}>
+          <Text style={[styles.headTitle]}>
+            <Text style={[styles.textBold]}>PlantApp</Text> Premium
+          </Text>
+          <Text style={[styles.subTitle]}>Access All Features</Text>
 
-     
+          <PaywallHorizantalSlider />
+        </View>
+        <View style={{flex: 1, paddingHorizontal: horizontalScale(20)}}>
+          <PaywallRadioGroup
+            selected={selected}
+            onSelected={onSelected}
+            items={paywallPaymentData}
+          />
 
-        <PaywallHorizantalSlider />
+          <View style={[{flex: 1}]}>
+            <Button label="Try free for 3 days" textBold />
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -39,7 +62,7 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
   },
   topFixImage: {
-    flex: 0.65,
+    flex: 0.6,
     width: Dimensions.get('window').width,
     height: verticalScale(Dimensions.get('window').height * 0.65),
     alignSelf: 'flex-start',
@@ -52,9 +75,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     borderWidth: 1,
     borderColor: 'white',
-    flex: 0.65,
+    flex: 1,
     width: Dimensions.get('window').width,
-    height: verticalScale(500),
+    height: verticalScale(550),
   },
   textBold: {
     fontWeight: 'bold',
@@ -68,7 +91,8 @@ const styles = StyleSheet.create({
     fontSize: verticalScale(17),
     fontFamily: 'Rubik',
     color: 'rgba(255, 255, 255, 0.7)',
+    marginBottom: 10,
   },
 });
 
-export default OnboardingPaywallScreen;
+export default PaywallScreen;
