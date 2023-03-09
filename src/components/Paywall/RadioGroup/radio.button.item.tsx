@@ -1,7 +1,15 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import {horizontalScale, verticalScale} from '../../../utils/metrics';
 import {PaywallPaymentItemProps} from '../../../utils/props';
+import {RadioButtonBadge} from './radio.button.badge';
 
 type Props = {
   selected?: PaywallPaymentItemProps;
@@ -13,8 +21,17 @@ export const RadioButtonItem = ({item, selected, onSelected}: Props) => {
   return (
     <TouchableOpacity
       key={item?.id}
-      style={[styles.itemContainer]}
+      style={[
+        styles.itemContainer,
+        selected?.id === item.id && styles.selectedItemContainer,
+      ]}
       onPress={() => onSelected(item)}>
+      {item.discount > 0 && (
+        <RadioButtonBadge
+          label="Save 50%"
+          selected={selected?.id === item.id}
+        />
+      )}
       <View style={[styles.radioBtn]}>
         {selected?.id === item.id && <View style={[styles.radioBtnSelected]} />}
       </View>
@@ -29,22 +46,33 @@ export const RadioButtonItem = ({item, selected, onSelected}: Props) => {
 
 const styles = StyleSheet.create({
   itemContainer: {
+    flex: 1,
     height: verticalScale(76),
     flexDirection: 'row',
-    marginRight: 12,
     borderRadius: 14,
     backgroundColor: 'rgba(35,48,41, 0.95)',
     padding: verticalScale(14),
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: verticalScale(6),
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
   },
+
+  selectedItemContainer: {
+    backgroundColor: 'rgba(35,48,41, 0.3)',
+    borderColor: '#28AF6E',
+  },
+
   itemTitle: {
     color: 'white',
     fontFamily: 'Rubik',
     fontWeight: '500',
-    fontSize: verticalScale(20),
+    fontSize: verticalScale(16),
   },
   itemSubTitle: {
+    fontSize: verticalScale(12),
+    fontWeight: '400',
     marginTop: 6,
     color: 'rgba(255,255,255, 0.7)',
   },

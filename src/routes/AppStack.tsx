@@ -1,37 +1,55 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {HomeScreen} from '../screens/Common/HomeScreen';
 import {Text} from 'react-native';
 import EmptyScreen from '../screens/Common/EmptyScreen';
 import {ROUTES} from '../constants';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import HomeScreen from '../screens/Common/HomeScreen';
+import {BottomBarIcon} from '../components/BottomBarIcon';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const TABICONS: any = {
-  Orders: 'home',
-  Shifts: 'time',
-  Earnings: 'cash',
-  Support: 'chatbubbles',
+const TITLE: any = {
+  home: 'Home',
+  diagnose: 'Diagnose',
+  garden: 'My Garden',
+  profile: 'Profile',
 };
+
+const TABICONS: any = {
+  home: require('../../assets/icons/home.png'),
+  diagnose: require('../../assets/icons/diagnose.png'),
+  garden: require('../../assets/icons/garden.png'),
+  profile: require('../../assets/icons/profile.png'),
+};
+
+const TABFOCUSICONS: any = {
+  home: require('../../assets/icons/home_active.png'),
+  diagnose: require('../../assets/icons/diagnose.png'),
+  garden: require('../../assets/icons/garden.png'),
+  profile: require('../../assets/icons/profile.png'),
+};
+
 const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}: any) => ({
-        tabBarStyle: {backgroundColor: 'green'},
         tabBarItemStyle: {paddingBottom: 4},
-        tabBarActiveTintColor: 'yellow',
-        tabBarInactiveTintColor: 'white',
+        tabBarActiveTintColor: '#28AF6E',
         tabBarLabel: ({focused, color}) => (
-          <Text style={{color}}>{route.name}</Text>
+          <Text style={{color}}>{TITLE[route.name]}</Text>
         ),
         tabBarIcon: ({focused, color}) => {
-          const iconName = `${TABICONS[route.name]}${
-            focused ? '' : '-outline'
-          }`;
-          return '';
+          const iconName = `${TITLE[route.name]}${focused ? '' : '-outline'}`;
+          return (
+            <BottomBarIcon
+              imageSource={
+                focused ? TABFOCUSICONS[route.name] : TABICONS[route.name]
+              }
+            />
+          );
         },
       })}>
       <Tab.Screen
@@ -41,6 +59,11 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name={ROUTES.DIAGNOSE}
+        component={EmptyStack}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name={'empty'}
         component={EmptyStack}
         options={{headerShown: false}}
       />
@@ -63,7 +86,7 @@ const HomeStack = ({navigation}) => {
     <Stack.Navigator>
       <Stack.Group>
         <Stack.Screen
-          name="CourierHomeScreen"
+          name="HomeScreen"
           component={HomeScreen}
           options={{headerShown: false}}
         />

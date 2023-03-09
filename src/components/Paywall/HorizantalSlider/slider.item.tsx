@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
   itemSubTitle: {
     marginTop: verticalScale(6),
     color: 'rgba(255,255,255, 0.7)',
+    fontSize: verticalScale(13),
+    fontWeight: '400',
   },
   iconContainer: {
     width: verticalScale(36),

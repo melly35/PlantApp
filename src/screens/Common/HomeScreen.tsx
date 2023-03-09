@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const EmptyScreen = () => {
+const HomeScreen = () => {
   return (
     <View>
       <Text>Empty Screen</Text>
@@ -9,4 +9,4 @@ const EmptyScreen = () => {
   );
 };
 
-export default EmptyScreen;
+export default HomeScreen;

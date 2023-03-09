@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useDispatch} from 'react-redux';
 import {Button} from '../../components/Button';
 import {CustomIcon} from '../../components/CustomIcon';
+import {PaywallCloseButton} from '../../components/Paywall/CloseButton';
+import {PaywallFooter} from '../../components/Paywall/Footer';
 import {
   PaywallHorizantalSlide,
   PaywallHorizantalSlider,
@@ -12,7 +16,10 @@ import paywallPaymentData from '../../utils/paywallPaymentData';
 import {PaywallPaymentItemProps} from '../../utils/props';
 import {ScannerIcon} from '../../utils/svg/general';
 
+import {setOnboardingSuccess} from '../../context/slices/onBoardingSlice';
+
 const PaywallScreen = () => {
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState<PaywallPaymentItemProps>();
   const onSelected = (item: PaywallPaymentItemProps) => {
     setSelected(item);
@@ -24,29 +31,39 @@ const PaywallScreen = () => {
         style={[styles.topFixImage]}
         resizeMode="cover"
       />
+      <PaywallCloseButton
+        onPress={() => {
+          console.log('sa');
+          dispatch(setOnboardingSuccess());
+        }}
+      />
       <View style={[styles.content]}>
         <View
           style={{
-            paddingLeft: horizontalScale(20),
-            flex: 1,
+            height: verticalScale(220),
           }}>
           <Text style={[styles.headTitle]}>
             <Text style={[styles.textBold]}>PlantApp</Text> Premium
           </Text>
           <Text style={[styles.subTitle]}>Access All Features</Text>
 
-          <PaywallHorizantalSlider />
+          <PaywallHorizantalSlider style={{paddingLeft: horizontalScale(20)}} />
         </View>
+
         <View style={{flex: 1, paddingHorizontal: horizontalScale(20)}}>
           <PaywallRadioGroup
+            style={{flex: 2}}
             selected={selected}
             onSelected={onSelected}
             items={paywallPaymentData}
           />
 
-          <View style={[{flex: 1}]}>
-            <Button label="Try free for 3 days" textBold />
-          </View>
+          <Button
+            label="Try free for 3 days"
+            textBold
+            style={{marginBottom: 10}}
+          />
+          <PaywallFooter />
         </View>
       </View>
     </View>
@@ -73,8 +90,6 @@ const styles = StyleSheet.create({
   content: {
     position: 'absolute',
     bottom: 0,
-    borderWidth: 1,
-    borderColor: 'white',
     flex: 1,
     width: Dimensions.get('window').width,
     height: verticalScale(550),
@@ -85,13 +100,15 @@ const styles = StyleSheet.create({
   headTitle: {
     fontSize: verticalScale(30),
     color: 'white',
+    paddingLeft: horizontalScale(20),
   },
   subTitle: {
     marginTop: verticalScale(8),
     fontSize: verticalScale(17),
     fontFamily: 'Rubik',
     color: 'rgba(255, 255, 255, 0.7)',
-    marginBottom: 10,
+    marginBottom: verticalScale(13),
+    paddingLeft: horizontalScale(20),
   },
 });
 

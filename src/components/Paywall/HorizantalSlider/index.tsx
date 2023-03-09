@@ -2,7 +2,7 @@
 import React from 'react';
 import {FlatList, StyleProp} from 'react-native';
 import paywallData from '../../../utils/paywallAttributesData';
-import {PaywallItem} from './paywall.item';
+import {PaywallItem} from './slider.item';
 
 type Props = {
   style?: StyleProp<any>;

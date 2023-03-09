@@ -1,6 +1,6 @@
 export default {
-  HOME: 'Home',
-  DIAGNOSE: 'Diagnose',
-  MYGARDEN: 'My Garden',
-  PROFILE: 'Profile',
+  HOME: 'home',
+  DIAGNOSE: 'diagnose',
+  MYGARDEN: 'garden',
+  PROFILE: 'profile',
 };
