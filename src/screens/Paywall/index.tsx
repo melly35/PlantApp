@@ -9,7 +9,7 @@ import {PaywallFooter} from '../../components/Paywall/Footer';
 import {
   PaywallHorizantalSlide,
   PaywallHorizantalSlider,
-} from '../../components/Paywall/HorizantalSlider';
+} from '../../components/Paywall/HorizontalSlider';
 import {PaywallRadioGroup} from '../../components/Paywall/RadioGroup';
 import {horizontalScale, verticalScale} from '../../utils/metrics';
 import paywallPaymentData from '../../utils/paywallPaymentData';

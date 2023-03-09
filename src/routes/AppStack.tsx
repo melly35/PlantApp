@@ -7,6 +7,7 @@ import {ROUTES} from '../constants';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/Common/HomeScreen';
 import {BottomBarIcon} from '../components/BottomBarIcon';
+import WebViewScreen from '../screens/Common/WebViewScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -89,6 +90,11 @@ const HomeStack = ({navigation}) => {
           name="HomeScreen"
           component={HomeScreen}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="WebViewScreen"
+          component={WebViewScreen}
+          options={{headerShown: true}}
         />
       </Stack.Group>
     </Stack.Navigator>

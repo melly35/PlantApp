@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   Text,
   StyleSheet,
-  Dimensions,
+  GestureResponderEvent,
 } from 'react-native';
 import {horizontalScale, verticalScale} from '../../utils/metrics';
 
@@ -13,7 +13,7 @@ type Props = {
   label: string;
   style?: StyleProp<any>;
   textBold?: boolean;
-  onPress?: Function;
+  onPress?(e: GestureResponderEvent): void;
 };
 
 export const Button = ({label, style, textBold, onPress}: Props) => {

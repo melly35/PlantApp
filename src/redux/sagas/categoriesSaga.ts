@@ -7,7 +7,7 @@ export function* getCategories(payload) {
   try {
     const response = yield call(GetCategories);
     if (response.success) {
-      console.log('response', response.data);
+      console.log('getCategories', response.data);
       yield put({
         type: ActionTypes.category.GET_CATEGORIES_SUCCESS,
         response: response.data,

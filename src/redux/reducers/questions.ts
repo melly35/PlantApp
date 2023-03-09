@@ -1,8 +1,7 @@
-import {StackType} from '../../utils/enums';
 import ActionTypes from '../actionTypes';
 
 const initialState = {
-  categories: [],
+  questions: [],
   loading: false,
 };
 
@@ -10,19 +9,19 @@ export default function (state = initialState, action) {
   const response = action.response;
 
   switch (action.type) {
-    case ActionTypes.category.GET_CATEGORIES:
+    case ActionTypes.questions.GET_QUESTIONS:
       return {
         ...state,
         loading: true,
-        categories: [],
+        questions: [],
       };
-    case ActionTypes.category.GET_CATEGORIES_SUCCESS:
+    case ActionTypes.questions.GET_QUESTIONS_SUCCESS:
       return {
         ...state,
         loading: false,
-        categories: response?.data,
+        questions: response,
       };
-    case ActionTypes.category.GET_CATEGORIES_ERROR:
+    case ActionTypes.questions.GET_QUESTIONS_ERROR:
       return {
         ...state,
         loading: false,
