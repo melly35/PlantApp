@@ -17,10 +17,13 @@ import {PaywallPaymentItemProps} from '../../utils/props';
 import {ScannerIcon} from '../../utils/svg/general';
 
 import {setOnboardingSuccess} from '../../context/slices/onBoardingSlice';
+import Actions from '../../redux/actions';
 
 const PaywallScreen = () => {
   const dispatch = useDispatch();
-  const [selected, setSelected] = useState<PaywallPaymentItemProps>();
+  const [selected, setSelected] = useState<PaywallPaymentItemProps>(
+    paywallPaymentData[1],
+  );
   const onSelected = (item: PaywallPaymentItemProps) => {
     setSelected(item);
   };
@@ -33,8 +36,7 @@ const PaywallScreen = () => {
       />
       <PaywallCloseButton
         onPress={() => {
-          console.log('sa');
-          dispatch(setOnboardingSuccess());
+          dispatch(Actions.onBoardingAction.onBoardingSuccess());
         }}
       />
       <View style={[styles.content]}>

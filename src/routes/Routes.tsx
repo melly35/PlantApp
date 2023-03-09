@@ -16,7 +16,7 @@ import {StackType} from '../utils/enums';
 const loading = false;
 
 export const Router = () => {
-  const stack = useSelector(state => state.onBoarding.stack);
+  const stack = useSelector(state => state.onBoardingReducer.stack);
   const scheme = useColorScheme();
   useEffect(() => {
     // SplashScreen.hide();
