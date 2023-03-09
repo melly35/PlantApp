@@ -1,7 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {FlatList, StyleProp, StyleSheet} from 'react-native';
-import {verticalScale} from '../../utils/metrics';
 import {CategoryItemProps} from '../../utils/props';
 import {CategoryItem} from './category.item';
 

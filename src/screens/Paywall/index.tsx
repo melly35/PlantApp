@@ -1,22 +1,15 @@
 import React, {useState} from 'react';
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useDispatch} from 'react-redux';
 import {Button} from '../../components/Button';
-import {CustomIcon} from '../../components/CustomIcon';
 import {PaywallCloseButton} from '../../components/Paywall/CloseButton';
 import {PaywallFooter} from '../../components/Paywall/Footer';
-import {
-  PaywallHorizantalSlide,
-  PaywallHorizantalSlider,
-} from '../../components/Paywall/HorizontalSlider';
+import {PaywallHorizantalSlider} from '../../components/Paywall/HorizontalSlider';
 import {PaywallRadioGroup} from '../../components/Paywall/RadioGroup';
 import {horizontalScale, verticalScale} from '../../utils/metrics';
 import paywallPaymentData from '../../utils/paywallPaymentData';
 import {PaywallPaymentItemProps} from '../../utils/props';
-import {ScannerIcon} from '../../utils/svg/general';
 
-import {setOnboardingSuccess} from '../../context/slices/onBoardingSlice';
 import Actions from '../../redux/actions';
 
 const PaywallScreen = () => {

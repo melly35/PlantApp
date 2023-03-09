@@ -1,9 +1,8 @@
 import ActionTypes from '../actionTypes';
 
-const onBoardingSuccess = (payload: any) => {
+const onBoardingSuccess = () => {
   return {
     type: ActionTypes.onBoarding.ONBOARDING,
-    payload,
   };
 };
 

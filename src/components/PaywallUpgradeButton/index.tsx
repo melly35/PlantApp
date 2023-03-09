@@ -6,7 +6,6 @@ import {
   Text,
   StyleSheet,
   GestureResponderEvent,
-  Image,
   View,
 } from 'react-native';
 import Ionic from 'react-native-vector-icons/Ionicons';

@@ -1,3 +1,4 @@
+import {Action} from 'redux';
 import {StackType} from '../../utils/enums';
 import ActionTypes from '../actionTypes';
 
@@ -5,7 +6,7 @@ const initialState = {
   stack: StackType.Onboarding,
 };
 
-export default function (state = initialState, action) {
+export default function (state = initialState, action: Action) {
   switch (action.type) {
     case ActionTypes.onBoarding.ONBOARDING:
       return {

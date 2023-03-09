@@ -1,14 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {version} from 'react';
-import {
-  View,
-  ActivityIndicator,
-  StyleSheet,
-  Text,
-  Image,
-  Dimensions,
-} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import React from 'react';
+import {View, StyleSheet, Text, Image, Dimensions} from 'react-native';
 import {horizontalScale, verticalScale} from '../../utils/metrics';
 import {SearchBox} from '../SearchBox';
 

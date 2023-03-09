@@ -4,11 +4,9 @@ import {
   View,
   StyleSheet,
   Text,
-  Image,
   ImageBackground,
   TouchableHighlight,
 } from 'react-native';
-import WebView from 'react-native-webview';
 import {horizontalScale, verticalScale} from '../../utils/metrics';
 import {QuestionItemProps} from '../../utils/props';
 

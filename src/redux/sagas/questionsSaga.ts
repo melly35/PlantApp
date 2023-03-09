@@ -1,7 +1,7 @@
 import {put, call, takeLatest, delay, select} from 'redux-saga/effects';
 import ActionTypes from '../actionTypes';
 
-import {GetQuestions} from '../../api/categories';
+import {GetQuestions} from '../../api/services';
 
 export function* getQuestions(payload) {
   try {

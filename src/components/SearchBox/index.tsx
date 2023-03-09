@@ -1,13 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {version} from 'react';
-import {
-  View,
-  ActivityIndicator,
-  StyleSheet,
-  TextInput,
-  TextInputChangeEventData,
-  NativeSyntheticEvent,
-} from 'react-native';
+import React from 'react';
+import {View, StyleSheet, TextInput} from 'react-native';
 import {horizontalScale, verticalScale} from '../../utils/metrics';
 import Ionic from 'react-native-vector-icons/Ionicons';
 

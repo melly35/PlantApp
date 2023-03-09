@@ -1,7 +1,7 @@
 import {put, call, takeLatest, delay, select} from 'redux-saga/effects';
 import ActionTypes from '../actionTypes';
 
-import {GetCategories} from '../../api/categories';
+import {GetCategories} from '../../api/services';
 
 export function* getCategories(payload) {
   try {

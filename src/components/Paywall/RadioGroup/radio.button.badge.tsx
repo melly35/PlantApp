@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
-import {horizontalScale, verticalScale} from '../../../utils/metrics';
+import {View, StyleSheet, Text} from 'react-native';
+import {verticalScale} from '../../../utils/metrics';
 
 type Props = {
   label: string;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image, Dimensions, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
 import {horizontalScale, verticalScale} from '../../utils/metrics';
 import {CategoryItemProps} from '../../utils/props';
 
