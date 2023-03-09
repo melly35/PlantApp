@@ -1,13 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {
-  View,
-  ActivityIndicator,
-  StyleProp,
-  ImageSourcePropType,
-  Image,
-  StyleSheet,
-} from 'react-native';
+import {StyleProp, ImageSourcePropType, Image, StyleSheet} from 'react-native';
+import {verticalScale} from '../../utils/metrics';
 
 type Props = {
   imageSource: ImageSourcePropType;
@@ -25,5 +19,8 @@ export const BottomBarIcon = ({imageSource, style}: Props) => {
 };
 
 const styles = StyleSheet.create({
-  icon: {},
+  icon: {
+    width: verticalScale(24),
+    height: verticalScale(24),
+  },
 });

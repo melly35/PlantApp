@@ -4,7 +4,7 @@ import Config from 'react-native-config';
 export async function GetCategories() {
   try {
     let url = `${Config.API_URL}/getCategories`;
-    console.log('url', Config.API_URL);
+
     let options = {
       url,
       headers: {'Content-Type': 'application/json'},
@@ -12,7 +12,7 @@ export async function GetCategories() {
     };
 
     const res = await axios(options);
-    console.log('res', res);
+
     if (res.status == 200) {
       return {
         success: true,
@@ -27,7 +27,7 @@ export async function GetCategories() {
       };
     }
   } catch (err) {
-    console.log('Error', err);
+    // console.log('Error', err);
     // throw new Error(err);
   }
 }
@@ -35,7 +35,7 @@ export async function GetCategories() {
 export async function GetQuestions() {
   try {
     let url = `${Config.API_URL}/getQuestions`;
-    console.log('url', Config.API_URL);
+
     let options = {
       url,
       headers: {'Content-Type': 'application/json'},
@@ -43,7 +43,7 @@ export async function GetQuestions() {
     };
 
     const res = await axios(options);
-    console.log('res', res);
+
     if (res.status == 200) {
       return {
         success: true,

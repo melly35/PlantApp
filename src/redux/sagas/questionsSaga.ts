@@ -7,7 +7,6 @@ export function* getQuestions(payload) {
   try {
     const response = yield call(GetQuestions);
     if (response.success) {
-      console.log('getQuestions', response.data);
       yield put({
         type: ActionTypes.questions.GET_QUESTIONS_SUCCESS,
         response: response.data,
@@ -16,7 +15,7 @@ export function* getQuestions(payload) {
       yield put({type: ActionTypes.questions.GET_QUESTIONS_ERROR});
     }
   } catch (error) {
-    console.log('err2', error);
+    // console.log('err2', error);
   }
 }
 

@@ -8,6 +8,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/Common/HomeScreen';
 import {BottomBarIcon} from '../components/BottomBarIcon';
 import WebViewScreen from '../screens/Common/WebViewScreen';
+import {BottomBarMidButton} from '../components/BottomBarMidButton';
+import {verticalScale} from '../utils/metrics';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -39,11 +41,13 @@ const TabNavigator = () => {
       screenOptions={({route}: any) => ({
         tabBarItemStyle: {paddingBottom: 4},
         tabBarActiveTintColor: '#28AF6E',
+        tabBarStyle: {marginTop: verticalScale(4)},
         tabBarLabel: ({focused, color}) => (
-          <Text style={{color}}>{TITLE[route.name]}</Text>
+          <Text style={{fontSize: verticalScale(10), color}}>
+            {TITLE[route.name]}
+          </Text>
         ),
         tabBarIcon: ({focused, color}) => {
-          const iconName = `${TITLE[route.name]}${focused ? '' : '-outline'}`;
           return (
             <BottomBarIcon
               imageSource={
@@ -62,21 +66,44 @@ const TabNavigator = () => {
         name={ROUTES.DIAGNOSE}
         component={EmptyStack}
         options={{headerShown: false}}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+          },
+        }}
       />
       <Tab.Screen
         name={'empty'}
         component={EmptyStack}
-        options={{headerShown: false}}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused, color, size}) => <BottomBarMidButton />,
+        }}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+          },
+        }}
       />
       <Tab.Screen
         name={ROUTES.MYGARDEN}
         component={EmptyStack}
         options={{headerShown: false}}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+          },
+        }}
       />
       <Tab.Screen
         name={ROUTES.PROFILE}
         component={EmptyStack}
         options={{headerShown: false}}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+          },
+        }}
       />
     </Tab.Navigator>
   );

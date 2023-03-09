@@ -10,15 +10,13 @@ import {horizontalScale, verticalScale} from '../../utils/metrics';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.categoriesReducer.categories);
-  const categoriesLoading = useSelector(
-    state => state.categoriesReducer.loading,
+  const {categories, loading: categoriesLoading} = useSelector(
+    state => state.categoriesReducer,
   );
-  const questions = useSelector(state => state.questionsReducer.questions);
-  const questionsIsLoading = useSelector(
-    state => state.questionsReducer.loading,
+
+  const {questions, loading: questionsLoading} = useSelector(
+    state => state.questionsReducer,
   );
-  console.log('categories', questions);
 
   useEffect(() => {
     dispatch(Actions.categoryAction.getCategories());

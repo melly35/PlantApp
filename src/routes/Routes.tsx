@@ -19,14 +19,12 @@ export const Router = () => {
   const stack = useSelector(state => state.onBoardingReducer.stack);
   const scheme = useColorScheme();
   useEffect(() => {
-    // SplashScreen.hide();
+    SplashScreen.hide();
   });
 
   if (loading) {
     return <Loading />;
   }
-
-  console.log('stack', stack);
 
   return (
     <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
